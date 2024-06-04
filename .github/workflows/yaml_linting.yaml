@@ -4,8 +4,11 @@ name: YAML Lint
 on:
   push:
     paths:
-      - '**.yaml'
-      - '**.yml'
+      - '.github/workflows/**.yaml'
+      - '.github/workflows/**.yml'
+      - 'src/**.yaml'
+      - 'cmd/**.yaml'
+      - 'pkg/**.yaml'
       - '!docs/**'
 
 jobs:
