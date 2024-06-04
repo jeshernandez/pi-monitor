@@ -6,9 +6,6 @@ on:
     paths:
       - '.github/workflows/**.yaml'
       - '.github/workflows/**.yml'
-      - 'src/**.yaml'
-      - 'cmd/**.yaml'
-      - 'pkg/**.yaml'
       - '!docs/**'
 
 jobs:
