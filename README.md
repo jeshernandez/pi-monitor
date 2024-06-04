@@ -1,6 +1,8 @@
 - [Summary](#summary)
   - [Raspberry Pi](#raspberry-pi-details)
   - [Raspberry Pi Camera](#raspberry-camera)
+  - [Raspberry Pi Sensor](#raspberry-pi-temperature-sensor)
+  - [Raspberry Pi Sensor Setup](#raspberry-pi-temp-sensor-setup)
 
 
 
