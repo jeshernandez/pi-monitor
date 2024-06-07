@@ -32,7 +32,7 @@ func main() {
 
 }
 
-func GetSensorTemperature(fileName string)(celcius float64, farenheit float64) {
+func GetSensorTemperature(fileName string)(float64, float64) {
     fileData, err := os.ReadFile(fileName)
 		if err != nil {
 			log.Fatal(err)
