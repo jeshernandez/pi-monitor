@@ -24,6 +24,7 @@ func main() {
 	path := "/sys/bus/w1/devices"
 	ds18b20, err := VerifyPathExists(path)
 	location := path + ds18b20 + "/w1_slave"
+	fmt.Println("Location", location)
 
 	fileIO, err := os.OpenFile(location, os.O_RDWR, 0600)
 	if err != nil {
