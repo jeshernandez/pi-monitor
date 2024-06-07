@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+)
 
 func main() {
-	fmt.Printf("Hello")
+	fmt.Printf("Attemping to capture temperature...")
+	  entries, err := os.ReadDir("/sys/bus/w1/devices")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+		fmt.Print(entries)
 }
