@@ -44,6 +44,6 @@ for _, data := range fileData {
     fmt.Printf("ReadLine: %q\n", word)
     word = word[2:]
   }
-		fmt.Print("The temperature: ", word)
-}	
+}
+	fmt.Print("The temperature: ", word)	
 }
