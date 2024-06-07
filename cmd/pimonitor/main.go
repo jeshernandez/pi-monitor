@@ -39,11 +39,17 @@ func ReadLine(fileName string) {
 breakLine := "\n"
 
 secondLine := strings.Split(string(fileData[:]), breakLine)[1]
-fmt.Print("SecondLine: ", secondLine)
+//fmt.Print("SecondLine: ", secondLine)
 temperatureData := strings.Split(secondLine, " ")[9]
-fmt.Print("Temperature Data", temperatureData)
+//fmt.Print("Temperature Data", temperatureData)
 temperature, _ := strconv.ParseFloat(temperatureData[2:], 64)
 fmt.Print("Temperature", temperature)
+
+celcius := (temperature / 1000)
+
+farenheit := (celcius * 1.8) + 32
+
+fmt.Print("Temperature in Farenheit: ", farenheit)
 
 // for _, data := range fileData {
 //   if !bytes.Equal([]byte{data}, []byte(breakLine)) {
