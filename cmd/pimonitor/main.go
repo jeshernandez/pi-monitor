@@ -1,11 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
-	"strings"
 )
 
 func VerifyPathExists(path string) (string, error) {
@@ -23,25 +22,27 @@ func VerifyPathExists(path string) (string, error) {
 func main() {
 	path := "/sys/bus/w1/devices/"
 	ds18b20, err := VerifyPathExists(path)
-	location := path + ds18b20 + "/w1_slave"
-	fmt.Println("Location", location)
-
-	fileIO, err := os.OpenFile(location, os.O_RDWR, 0600)
 	if err != nil {
-		panic(err)
+		log.Fatal(err) 
 	}
+	ReadLine(path + ds18b20 + "/w1_slave")
 
-	defer fileIO.Close()
-	rawBytes, err := ioutil.ReadAll(fileIO)
-	if err != nil {
-		panic(err)
-	}
-	lines := strings.Split(string(rawBytes), "\n")
-	for i, line := range lines {
-		if i == 2 {
-			fmt.Println(line)
+}
+
+func ReadLine(fileName string) {
+    fileData, err := os.ReadFile(fileName)
+		if err != nil {
+			log.Fatal(err)
 		}
-	}
+word := []byte{}
+breakLine := "\n"
 
-	
+for _, data := range fileData {
+  if !bytes.Equal([]byte{data}, []byte(breakLine)) {
+    word = append(word, data)
+  } else {
+    fmt.Printf("ReadLine: %q\n", word)
+    word = word[:0]
+  }
+}	
 }
