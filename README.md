@@ -7,7 +7,7 @@
 
 
 ## Summary
-An application to push telemetry to AWS from a raspberry pi. 
+An application written in Go to capture ds18b20 temperature information. An alternative to applications written in Python. Additionally, this appliation is to work with a sensor to trigger a camera recording--again in Golang versus Python. Most examples as of today are mainly writen in Python. 
 
 ## Raspberry Pi Details
 Model: Raspberry Pi 4 Model B Rev 1.4, 8GB
