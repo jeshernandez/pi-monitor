@@ -37,11 +37,12 @@ func ReadLine(fileName string) {
 //word := []byte{}
 breakLine := "\n"
 
-tempereatureData := strings.Split(string(fileData[:]), breakLine)[1]
-fmt.Print("tempData: ", tempereatureData)
-temperature := strings.Split(tempereatureData, " ")[9]
+secondLine := strings.Split(string(fileData[:]), breakLine)[1]
+fmt.Print("SecondLine: ", secondLine)
+temperatureData := strings.Split(secondLine, " ")[9]
+fmt.Print("Temperature Data", temperatureData)
+temperature := temperatureData[2:]
 fmt.Print("Temperature", temperature)
-
 
 // for _, data := range fileData {
 //   if !bytes.Equal([]byte{data}, []byte(breakLine)) {
