@@ -46,10 +46,10 @@ temperatureData := strings.Split(secondLine, " ")[9]
 temperature, _ := strconv.ParseFloat(temperatureData[2:], 64)
 fmt.Print("Temperature", temperature)
 
-celcius1 := (temperature / 1000)
+celcius := (temperature / 1000)
 
-farenheit1 := (celcius * 1.8) + 32
+farenheit := (celcius * 1.8) + 32
 
-return celcius1, farenheit1
+return celcius, farenheit
 
 }
