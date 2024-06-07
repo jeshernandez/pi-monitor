@@ -26,30 +26,35 @@ func main() {
 	if err != nil {
 		log.Fatal(err) 
 	}
-	_, faren := GetSensorTemperature(path + ds18b20 + "/w1_slave")
 
-	fmt.Print("Temp: ", faren)	
-
-}
-
-func GetSensorTemperature(fileName string)(float64, float64) {
-    fileData, err := os.ReadFile(fileName)
+	for true {
+		_, faren, err := GetSensorTemperature(path + ds18b20 + "/w1_slave")
 		if err != nil {
 			log.Fatal(err)
 		}
-breakLine := "\n"
+		fmt.Print("Temp: ", faren)	
+  }
 
-secondLine := strings.Split(string(fileData[:]), breakLine)[1]
-//fmt.Print("SecondLine: ", secondLine)
-temperatureData := strings.Split(secondLine, " ")[9]
-//fmt.Print("Temperature Data", temperatureData)
-temperature, _ := strconv.ParseFloat(temperatureData[2:], 64)
-fmt.Print("Temperature", temperature)
+}
 
-celcius := (temperature / 1000)
+func GetSensorTemperature(fileName string)(float64, float64, error) {
+	fileData, err := os.ReadFile(fileName)
+	if err != nil {
+		log.Fatal(err)
+	}
+	breakLine := "\n"
 
-farenheit := (celcius * 1.8) + 32
+	secondLine := strings.Split(string(fileData[:]), breakLine)[1]
+	//fmt.Print("SecondLine: ", secondLine)
+	temperatureData := strings.Split(secondLine, " ")[9]
+	//fmt.Print("Temperature Data", temperatureData)
+	temperature, _ := strconv.ParseFloat(temperatureData[2:], 64)
+	fmt.Print("Temperature", temperature)
 
-return celcius, farenheit
+	celcius := (temperature / 1000)
+
+	farenheit := (celcius * 1.8) + 32
+
+	return celcius, farenheit, err
 
 }
