@@ -32,7 +32,7 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Print("Temp: ", faren)	
+		fmt.Println("Temp: ", faren)	
   }
 
 }
