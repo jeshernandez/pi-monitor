@@ -39,7 +39,7 @@ breakLine := "\n"
 
 tempereatureData := strings.Split(string(fileData[:]), breakLine)[1]
 fmt.Print("tempData: ", tempereatureData)
-temperature := tempereatureData[2:]
+temperature := strings.Split(tempereatureData, " ")[9]
 fmt.Print("Temperature", temperature)
 
 
