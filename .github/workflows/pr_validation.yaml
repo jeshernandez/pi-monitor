@@ -4,6 +4,7 @@ name: PR Validation
 on:
   pull_request:
     paths:
+      - 'infra/**'
       - 'cmd/**'
       - 'pkg/**'
       - 'internal/**'
@@ -19,7 +20,6 @@ jobs:
     strategy:
       matrix:
         go-version: ['1.22.x']
-
     steps:
       - uses: actions/checkout@v4
       - name: Setup Go ${{ matrix.go-version }}
@@ -27,11 +27,17 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
           cache-dependency-path: subdir/go.sum
-      - name: Display Go version
-        run: |
-            go version
-            go get .
-      - name: Compile
-        run: make compile
+      - name: Install dependencies
+        working-directory: ${{ github.workspace }}/cmd/pimonitor
+        run: go mod tidy
       - name: Run Test
-        run: go test -race test/...
+        working-directory: ${{ github.workspace }}/test
+        run: go test -v
+      - name: Go Build
+        working-directory: ${{ github.workspace }}
+        run: |
+            make build
+      - name: make copmile
+        working-directory: ${{ github.workspace }}
+        run: |
+            make compile
