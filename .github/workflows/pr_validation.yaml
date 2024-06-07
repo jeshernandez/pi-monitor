@@ -28,6 +28,7 @@ jobs:
           go-version: ${{ matrix.go-version }}
           cache-dependency-path: subdir/go.sum
       - name: Install dependencies
+        working-directory: ${{ github.workspace }}/cmd/pimonitor
         run: go mod tidy
       - name: Run Test
         working-directory: ${{ github.workspace }}/test
@@ -37,6 +38,6 @@ jobs:
         run: |
             make build
       - name: make copmile
-        working-directory: ${{ github.workspace }}
+        working-directory: ${{ github.workspace }}/cmd/pimonitor
         run: |
             make compile
