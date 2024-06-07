@@ -1,10 +1,10 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func VerifyPathExists(path string) (string, error) {
@@ -37,13 +37,17 @@ func ReadLine(fileName string) {
 word := []byte{}
 breakLine := "\n"
 
-for _, data := range fileData {
-  if !bytes.Equal([]byte{data}, []byte(breakLine)) {
-    word = append(word, data)
-  } else {
-    fmt.Printf("ReadLine: %q\n", word)
-    word = word[2:]
-  }
-}
-	fmt.Print("The temperature: ", word)	
+secondline := strings.Split(string(fileData[:]), breakLine)
+fmt.Print("Original: ", word)
+fmt.Print("Second Line: ", secondline)
+
+// for _, data := range fileData {
+//   if !bytes.Equal([]byte{data}, []byte(breakLine)) {
+//     word = append(word, data)
+//   } else {
+//     fmt.Printf("ReadLine: %q\n", word)
+//     word = word[:0]
+//   }
+// }
+	
 }
