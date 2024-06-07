@@ -13,5 +13,9 @@ func main() {
         log.Fatal(err)
     }
 
+		for _, e := range entries {
+			fmt.Println(e.Name)
+		}
+
 		fmt.Print(entries)
 }
