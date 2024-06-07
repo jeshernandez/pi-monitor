@@ -21,7 +21,7 @@ func VerifyPathExists(path string) (string, error) {
 }
 
 func main() {
-	path := "/sys/bus/w1/devices"
+	path := "/sys/bus/w1/devices/"
 	ds18b20, err := VerifyPathExists(path)
 	location := path + ds18b20 + "/w1_slave"
 	fmt.Println("Location", location)
