@@ -26,16 +26,17 @@ func main() {
 	if err != nil {
 		log.Fatal(err) 
 	}
-	ReadLine(path + ds18b20 + "/w1_slave")
+	_, faren := GetSensorTemperature(path + ds18b20 + "/w1_slave")
+
+	fmt.Print("Temp: ", faren)	
 
 }
 
-func ReadLine(fileName string) {
+func GetSensorTemperature(fileName string)(celcius float64, farenheit float64) {
     fileData, err := os.ReadFile(fileName)
 		if err != nil {
 			log.Fatal(err)
 		}
-//word := []byte{}
 breakLine := "\n"
 
 secondLine := strings.Split(string(fileData[:]), breakLine)[1]
@@ -45,19 +46,10 @@ temperatureData := strings.Split(secondLine, " ")[9]
 temperature, _ := strconv.ParseFloat(temperatureData[2:], 64)
 fmt.Print("Temperature", temperature)
 
-celcius := (temperature / 1000)
+celcius1 := (temperature / 1000)
 
-farenheit := (celcius * 1.8) + 32
+farenheit1 := (celcius * 1.8) + 32
 
-fmt.Print("Temperature in Farenheit: ", farenheit)
+return celcius1, farenheit1
 
-// for _, data := range fileData {
-//   if !bytes.Equal([]byte{data}, []byte(breakLine)) {
-//     word = append(word, data)
-//   } else {
-//     fmt.Printf("ReadLine: %q\n", word)
-//     word = word[:0]
-//   }
-// }
-	
 }
