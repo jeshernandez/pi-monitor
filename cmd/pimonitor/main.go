@@ -39,6 +39,9 @@ breakLine := "\n"
 
 tempereatureData := strings.Split(string(fileData[:]), breakLine)
 fmt.Print("tempData: ", tempereatureData)
+temperature := tempereatureData[2:]
+fmt.Print("Temperature", temperature)
+
 
 // for _, data := range fileData {
 //   if !bytes.Equal([]byte{data}, []byte(breakLine)) {
