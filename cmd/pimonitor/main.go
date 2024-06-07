@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -41,7 +42,7 @@ secondLine := strings.Split(string(fileData[:]), breakLine)[1]
 fmt.Print("SecondLine: ", secondLine)
 temperatureData := strings.Split(secondLine, " ")[9]
 fmt.Print("Temperature Data", temperatureData)
-temperature := temperatureData[2:]
+temperature, _ := strconv.ParseFloat(temperatureData[2:], 64)
 fmt.Print("Temperature", temperature)
 
 // for _, data := range fileData {
