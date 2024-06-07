@@ -49,10 +49,7 @@ func GetSensorTemperature(fileName string)(float64, float64, error) {
 	temperatureData := strings.Split(secondLine, " ")[9]
 	//fmt.Print("Temperature Data", temperatureData)
 	temperature, _ := strconv.ParseFloat(temperatureData[2:], 64)
-	fmt.Print("Temperature", temperature)
-
 	celcius := (temperature / 1000)
-
 	farenheit := (celcius * 1.8) + 32
 
 	return celcius, farenheit, err
