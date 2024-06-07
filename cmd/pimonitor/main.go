@@ -42,7 +42,7 @@ for _, data := range fileData {
     word = append(word, data)
   } else {
     fmt.Printf("ReadLine: %q\n", word)
-    word = word[:0]
+    word = word[2:]
   }
 }	
 }
