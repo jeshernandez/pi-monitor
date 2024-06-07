@@ -38,6 +38,6 @@ jobs:
         run: |
             make build
       - name: make copmile
-        working-directory: ${{ github.workspace }}/cmd/pimonitor
+        working-directory: ${{ github.workspace }}
         run: |
             make compile
