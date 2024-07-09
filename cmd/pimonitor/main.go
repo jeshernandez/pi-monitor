@@ -6,6 +6,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func VerifyPathExists(path string) (string, error) {
@@ -33,6 +34,7 @@ func main() {
 			log.Fatal(err)
 		}
 		fmt.Println("Temp: ", faren)	
+		time.Sleep(3 * time.Second)
   }
 
 }
@@ -43,8 +45,7 @@ func GetSensorTemperature(fileName string)(float64, float64, error) {
 		log.Fatal(err)
 	}
 	breakLine := "\n"
-	fileDataSize := len(string(fileData[:]))
-	fmt.Print("Getting Size...", fileDataSize)
+
 	secondLine := strings.Split(string(fileData[:]), breakLine)[1]
 	//fmt.Print("SecondLine: ", secondLine)
 	temperatureData := strings.Split(secondLine, " ")[9]
