@@ -6,6 +6,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func VerifyPathExists(path string) (string, error) {
@@ -32,7 +33,8 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println("Temp: ", faren)	
+		fmt.Println("Temp: ", faren, ", (3 sec delay)")	
+		time.Sleep(3 * time.Second)
   }
 
 }
